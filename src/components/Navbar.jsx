@@ -3,22 +3,25 @@ import React from 'react'
 const Navbar = () => {
    return (
     <div>
-      <div className="bookstore-navbar w-auto flex justify-between">
-        <div className="bookstore-logo">
+      <div className="bookstore-navbar w-full">
+        <div className='container mx-auto flex justify-between items-center px-3 py-1 bg-amber-50'>
+         <div className="bookstore-logo">
           <h2 className=''>Book Store</h2>
-        </div>
-        <div className="bookstore-search-option">
+         </div>
+         <div className="bookstore-search-option">
           <form>
             <input type="text" name="" id="" placeholder='Search with product name' />
             <button type="submit"></button>
           </form>
-        </div>
-        <div className="bookstore-links">
+         </div>
+         <div className="bookstore-links">
           <ul>
+            
             <li><a href="">my account</a></li>
             <li><a href="">checkout</a></li>
             <li><a href="">sign in</a></li>
           </ul>
+         </div>
         </div>
       </div>
     </div>

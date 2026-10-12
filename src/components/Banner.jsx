@@ -4,35 +4,31 @@ import { assets } from '../assets/assets'
 const Banner = () => {
   return (
     <section
-        aria-label="Huge sale banner"
-        className="relative isolate flex min-h-420px items-center overflow-hidden bg-[#c6e5de] sm:min-h-520px lg:min-h-700px"
+      aria-label="Huge sale banner"
+      className="relative isolate flex min-h-440px items-center overflow-hidden bg-[#c6e5de] sm:min-h-520px lg:min-h-720px"
     >
-      {/* Background image (slow zoom) */}
-      <div
+      {/* Content */}
+      <div 
         aria-hidden="true"
-        style={{ backgroundImage: `url(${gradientBg})` }}
-        className="animate-bg-zoom absolute inset-0 -z-20 bg-cover bg-position:70%_center bg-no-repeat md:bg-right"
-      />
-
-      {/* Soft overlay so the text stays readable on small screens */}
-      <div
+        style={{ backgroundImage: `url(${assets.bannerImg02})` }}
+        className="w-full py-16 inset-0 -z-10 bg-cover bg-center bg-no-repeat">
+        {/* Blurred color */}
+        <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-r from-[#c6e5de]/80 via-[#c6e5de]/30 to-transparent lg:from-transparent lg:via-transparent"
-      />
+        className="absolute inset-0 -z-10 bg-[#cd8d8d40] backdrop-blur-sm"
+        />
 
-       {/* Content */}
-      <div className="w-full px-6 sm:px-12 lg:px-0 lg:pl-[14%]">
-        <div className="w-fit text-center font-['Alike',serif]">
-          <h2 className="animate-slide-right text-5xl text-white [animation-delay:100ms] sm:text-6xl lg:text-8xl">
+        <div className="w-fit text-center pt-10">
+          <h2 className="animate-slide-right text-4xl text-white [animation-delay:100ms] sm:text-3xl lg:text-3xl">
             Huge Sale
           </h2>
 
-          <h1 className="animate-fade-up -mt-1 text-6xl leading-tight text-[#333] [animation-delay:300ms] sm:text-8xl lg:-mt-2 lg:text-[10rem] lg:leading-none">
-            Koparion
+          <h1 className="animate-fade-up -mt-1 text-6xl leading-tight text-[#333] [animation-delay:300ms] sm:text-7xl lg:-mt-2 lg:text-[7rem] lg:leading-none">
+            Big Savings on Your Favorite Books
           </h1>
 
           <p className="animate-fade-up mt-2 text-lg text-gray-600 [animation-delay:500ms] sm:text-2xl lg:mt-4 lg:text-3xl">
-            Now starting at £99.00
+            Now starting at £89.00
           </p>
 
           <a
@@ -43,6 +39,13 @@ const Banner = () => {
           </a>
         </div>
       </div>
+
+      {/* Background image (slow zoom) */}
+      {/* <div
+        aria-hidden="true"
+        style={{ backgroundImage: `url(${assets.gradientBg})` }}
+        className="animate-bg-zoom absolute inset-0 -z-20 bg-cover bg-position:70%_center bg-no-repeat md:bg-right"
+      /> */}
     </section>
   )
 }

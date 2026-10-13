@@ -34,7 +34,6 @@ const SLIDES = [
 
 const AUTOPLAY_MS = 5000;
 
-
 export default function Banner() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -105,7 +104,7 @@ export default function Banner() {
           <img
             src={slide.image}
             alt={slide.alt}
-            width="900"
+            width="950"
             height="700"
             className="mx-auto h-60 w-full max-w-xl rounded-lg object-cover shadow-xl shadow-black/20 sm:h-80 lg:h-460px"
           />

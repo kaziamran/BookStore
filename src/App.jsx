@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
 import FeaturedBooks from './components/FeaturedBooks';
+import CallToAction from './components/CallToAction';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar/>
       <Banner/>
       <FeaturedBooks/>
+      <CallToAction/>
       <Footer/>
     </div>
   )

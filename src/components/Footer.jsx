@@ -113,7 +113,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/15">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-5 px-6 py-8 font-['Inter',serif] text-lg md:flex-row lg:px-16">
+        <div className="mx-auto flex max-w-1400px flex-col items-center justify-between gap-5 px-6 py-8 font-['Inter',serif] text-lg md:flex-row lg:px-16">
           <p className="text-center md:text-left">
             Copyright © 2021 HasThemes | Built with Koparion by HasThemes.
           </p>
@@ -123,7 +123,7 @@ export default function Footer() {
               <li
                 key={p.name}
                 title={p.name}
-                className={`grid h-11 w-[68px] place-items-center rounded-sm font-sans ${p.className}`}
+                className={`grid h-11 w-68px place-items-center rounded-sm font-sans ${p.className}`}
               >
                 {p.label}
               </li>

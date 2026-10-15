@@ -4,5 +4,9 @@
   --color-brand: #f07c29;
   --color-brand-light: #f0e7ff;
   --color-brand-dark: #4c1d95;
-  --font-display: "Inter", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+body {
+  font-family: "Inter", sans-serif;
 }

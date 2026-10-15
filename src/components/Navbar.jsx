@@ -44,7 +44,7 @@ const Navbar = () => {
       <div className="book-store-menubar bg-black px-3 py-3 md:px-16">
         <nav className='flex items-center justify-between'>
           {/* Links */}
-          <ul className="flex items-start gap-5 text-base font-medium text-gray-700 md:text-lg">
+          <ul className="flex items-start gap-5 text-base font-['Inter',serif] font-medium text-gray-700 md:text-lg">
             <li><a href="#" className="capitalize transition text-white hover:text-brand">home</a></li>
             <li><a href="#" className="capitalize transition text-white hover:text-brand">shop</a></li>
             <li><a href="#" className="capitalize transition text-white hover:text-brand">product</a></li>

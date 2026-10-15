@@ -59,7 +59,7 @@ export default function Banner() {
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
-      className="relative isolate overflow-hidden bg-[#c6e5de]"
+      className="relative isolate overflow-hidden bg-[#c6e5de] pt-4 pb-10"
     >
       {/* soft decorative glow */}
       <div
@@ -93,7 +93,7 @@ export default function Banner() {
 
           <a
             href={slide.button.href}
-            className="animate-pop-in mt-6 inline-block rounded-sm bg-[#ee7b24] px-10 py-2.5 text-lg text-white shadow-md shadow-black/30 transition duration-300 [animation-delay:700ms] hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 sm:mt-8 sm:text-2xl lg:mt-10 lg:px-12 lg:py-3"
+            className="animate-pop-in mt-6 inline-block rounded-sm bg-[#ee7b24] px-10 py-2.5 text-lg text-white capitalize shadow-md shadow-black/30 transition duration-300 [animation-delay:700ms] hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 sm:mt-8 sm:text-2xl lg:mt-10 lg:px-12 lg:py-3"
           >
             {slide.button.label}
           </a>

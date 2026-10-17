@@ -166,7 +166,7 @@ export default function FeaturedBooks() {
                 tabIndex={book.clone ? -1 : undefined}
                 className="group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#ee7b24]"
               >
-                <div className="aspect-[3/4] overflow-hidden rounded-sm bg-gray-100">
+                <div className="aspect-3/4 overflow-hidden rounded-sm bg-gray-100">
                   <img
                     src={book.image}
                     alt={book.alt}

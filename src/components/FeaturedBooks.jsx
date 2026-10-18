@@ -1,17 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { assets } from '../assets/assets'
+import { assets, ITEMS } from '../assets/assets'
 import { useCart } from '../context/CartContext';
-
-const ITEMS = [
-  { id: 1, image: assets.FeaturedBooks05, title: 'Demo product title', price: '$79.00', alt: 'Demo product title' },
-  { id: 2, image: assets.FeaturedBooks04, title: 'Sample product title', price: '$69.00', alt: 'Demo product title' },
-  { id: 3, image: assets.FeaturedBooks03, title: 'Demo product title', price: '$89.00', alt: 'Demo product title' },
-  { id: 4, image: assets.FeaturedBooks10, title: 'Sample product title', price: '$119.00', alt: 'Sample product title' },
-  { id: 5, image: assets.FeaturedBooks08, title: 'Demo product title', price: '$90.00', alt: 'demo product title' },
-  { id: 6, image: assets.FeaturedBooks06, title: 'Sample product title', price: '$99.00', alt: 'demo product title' },
-  { id: 7, image: assets.FeaturedBooks09, title: 'Demo product title', price: '$120.00', alt: 'demo product title' },
-  { id: 8, image: assets.FeaturedBooks11, title: 'Sample product title', price: '$100.00', alt: 'demo product title' },
-];
 
 const LEN = ITEMS.length;
 const CLONES = 4; // copies at each end (>= the most cards visible at once)

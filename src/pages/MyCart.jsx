@@ -7,7 +7,7 @@ import CartSummary from '../components/CartSummary'
 const MyCart = () => {
 
   const navigate = useNavigate();
-  const {state} = useCart()
+  const {state} = useCart();
   const {cartItems} = state;
 
   if(cartItems.length === 0) {

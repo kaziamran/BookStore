@@ -28,6 +28,16 @@ export function CartReducer(state, action) {
             }
         }
 
+        case "INCREMENT" : {
+            const id = action.payload;
+
+            return {
+                ...state,
+                cartItems: state.cartItems.map((item) =>
+                item.id === id ? {...item, quantity: item.quantity + 1} : item)   
+            }
+        }
+
         case "DECREMENT" : {
             const id = action.payload;
 

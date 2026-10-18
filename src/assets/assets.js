@@ -32,7 +32,7 @@ export const assets = {
   FeaturedBooks12,
 };
 
-export const BOOKS = [
+export const ITEMS = [
   {
     id: 1,
     image: assets.FeaturedBooks05,

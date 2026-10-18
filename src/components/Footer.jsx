@@ -1,34 +1,58 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const TOP_LINKS = [
-  { label: 'Enable Cookies', href: '#' },
-  { label: 'Privacy And Cookie Policy', href: '#' },
-  { label: 'Contact Us', href: '#' },
+  { label: "Enable Cookies", href: "#" },
+  { label: "Privacy And Cookie Policy", href: "#" },
+  { label: "Contact Us", href: "#" },
 ];
 
 const COLUMNS = [
   {
-    title: 'Products',
-    links: ['About us', 'Prices drop', 'New products', 'Best sales'],
+    title: "Products",
+    links: ["About us", "Prices drop", "New products", "Best sales"],
   },
   {
-    title: 'Our company',
-    links: ['Contact us', 'Sitemap', 'Stores', 'My account'],
+    title: "Our company",
+    links: ["Contact us", "Sitemap", "Stores", "My account"],
   },
   {
-    title: 'Your account',
-    links: ['Addresses', 'Credit slips', 'Orders', 'Personal info'],
+    title: "Your account",
+    links: ["Addresses", "Credit slips", "Orders", "Personal info"],
   },
 ];
 
 // Placeholder badges. Swap for real logo images, e.g. <img src={assets.visa} />
 const PAYMENTS = [
-  { name: 'Visa', label: 'VISA', className: 'bg-white text-[#1a1f71] font-extrabold italic' },
-  { name: 'PayPal', label: 'PayPal', className: 'bg-white text-[#009cde] font-bold italic' },
-  { name: 'Mastercard', label: 'MasterCard', className: 'bg-[#3a5fa8] text-white text-[11px] font-bold' },
-  { name: '2Checkout', label: '2CO', className: 'bg-[#6a67b5] text-white text-xl font-semibold' },
-  { name: 'Moneybookers', label: 'moneybookers', className: 'bg-white text-gray-500 text-[10px]' },
-  { name: 'Cirrus', label: 'Cirrus', className: 'bg-[#3fa7e0] text-white text-sm font-bold' },
+  {
+    name: "Visa",
+    label: "VISA",
+    className: "bg-white text-[#1a1f71] font-extrabold italic",
+  },
+  {
+    name: "PayPal",
+    label: "PayPal",
+    className: "bg-white text-[#009cde] font-bold italic",
+  },
+  {
+    name: "Mastercard",
+    label: "MasterCard",
+    className: "bg-[#3a5fa8] text-white text-[11px] font-bold",
+  },
+  {
+    name: "2Checkout",
+    label: "2CO",
+    className: "bg-[#6a67b5] text-white text-xl font-semibold",
+  },
+  {
+    name: "Moneybookers",
+    label: "moneybookers",
+    className: "bg-white text-gray-500 text-[10px]",
+  },
+  {
+    name: "Cirrus",
+    label: "Cirrus",
+    className: "bg-[#3fa7e0] text-white text-sm font-bold",
+  },
 ];
 
 export default function Footer() {
@@ -38,21 +62,26 @@ export default function Footer() {
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 300);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <footer className="bg-[#222] text-white pt-5">
       <div className="mx-auto max-w-1400px px-6 lg:px-16">
         {/* Top links */}
-        <nav aria-label="Footer top links" className="border-b border-white/15 py-5">
+        <nav
+          aria-label="Footer top links"
+          className="border-b border-white/15 py-5"
+        >
           <ul className="flex flex-wrap items-center gap-y-2 font-['Inter',serif] text-base">
             {TOP_LINKS.map((link, i) => (
               <li
                 key={link.label}
                 className={`pr-6 transition-colors hover:text-[#ee7b24] ${
-                  i < TOP_LINKS.length - 1 ? 'mr-6 border-r border-white/40 leading-none' : ''
+                  i < TOP_LINKS.length - 1
+                    ? "mr-6 border-r border-white/40 leading-none"
+                    : ""
                 }`}
               >
                 <a href={link.href}>{link.label}</a>
@@ -67,13 +96,16 @@ export default function Footer() {
             <nav
               key={col.title}
               aria-label={col.title}
-              className={`lg:border-r lg:border-white/10 ${i > 0 ? 'lg:pl-12' : ''}`}
+              className={`lg:border-r lg:border-white/10 ${i > 0 ? "lg:pl-12" : ""}`}
             >
               <h3 className="text-lg font-medium uppercase">{col.title}</h3>
               <ul className="mt-8 space-y-3 text-base text-gray-200">
                 {col.links.map((label) => (
                   <li key={label}>
-                    <a href="#" className="transition-colors hover:text-[#ee7b24]">
+                    <a
+                      href="#"
+                      className="transition-colors hover:text-[#ee7b24]"
+                    >
                       {label}
                     </a>
                   </li>
@@ -89,16 +121,21 @@ export default function Footer() {
               <p>
                 My Company
                 <br />
-                <span className="mt-2 block">42 avenue des Champs Elysées 75000 Paris France</span>
+                <span className="mt-2 block">
+                  42 avenue des Champs Elysées 75000 Paris France
+                </span>
               </p>
               <p>
-                Call us now:{' '}
-                <a href="tel:123456789" className="transition-colors hover:text-[#ee7b24]">
+                Call us now:{" "}
+                <a
+                  href="tel:123456789"
+                  className="transition-colors hover:text-[#ee7b24]"
+                >
                   123456789
                 </a>
               </p>
               <p>
-                Email:{' '}
+                Email:{" "}
                 <a
                   href="mailto:support@domain.com"
                   className="transition-colors hover:text-[#ee7b24]"
@@ -118,7 +155,10 @@ export default function Footer() {
             Copyright © 2021 HasThemes | Built with Koparion by HasThemes.
           </p>
 
-          <ul className="flex flex-wrap justify-center gap-2" aria-label="Accepted payment methods">
+          <ul
+            className="flex flex-wrap justify-center gap-2"
+            aria-label="Accepted payment methods"
+          >
             {PAYMENTS.map((p) => (
               <li
                 key={p.name}
@@ -135,14 +175,27 @@ export default function Footer() {
       {/* Back to top */}
       <button
         type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Back to top"
         className={`fixed bottom-6 right-6 z-50 grid size-12 place-items-center rounded-full border-2 border-white bg-[#222] text-white transition duration-300 hover:border-[#ee7b24] hover:text-[#ee7b24] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] ${
-          showTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
+          showTop
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-4 opacity-0"
         }`}
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-6" aria-hidden="true">
-          <path d="M6 15l6-6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="size-6"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 15l6-6 6 6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
     </footer>

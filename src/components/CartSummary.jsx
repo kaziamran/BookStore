@@ -21,7 +21,7 @@ const CartSummary = () => {
         <div>
           <div>
             <p>Sub Total</p>
-            <p>{subTotal}</p>
+            <p>${subTotal}</p>
           </div>
           <div>
             <p>Total Item</p>
@@ -29,16 +29,16 @@ const CartSummary = () => {
           </div>
           <div>
             <p>Discount (-20%)</p>
-            <p>{discount}</p>
+            <p>${discount}</p>
           </div>
           <div>
             <p>Delivery Fee</p>
-            <p>{deliveryFee}</p>
+            <p>${deliveryFee}</p>
           </div>
         </div>
         <div>
           <p>Total</p>
-          <p>{total}</p>
+          <p>${total}</p>
         </div>
 
         {/* <Button>Go to Checkout</Button> */}

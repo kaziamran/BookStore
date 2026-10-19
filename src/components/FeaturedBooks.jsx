@@ -176,7 +176,7 @@ export default function FeaturedBooks({item}) {
                 <h3 className="mt-4 line-clamp-2 text-lg text-[#333] transition-colors group-hover:text-[#ee7b24]">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-lg font-medium text-[#ee7b24]">{item.price}</p>
+                <p className="mt-1 text-lg font-medium text-[#ee7b24]">${item.price}</p>
               </a>
               <button
                 type='button'

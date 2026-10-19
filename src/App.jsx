@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import Navbar from './components/Navbar';
-import Banner from './components/Banner';
 import Footer from './components/Footer';
 import FeaturedBooks from './components/FeaturedBooks';
 import CallToAction from './components/CallToAction';
 import Home from './pages/Home';
 import MyCart from './pages/MyCart';
+import Checkout from './pages/Checkout';
 
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/mycart' element={<MyCart/>}></Route>
+        <Route path='/checkout' element={<Checkout/>}></Route>
       </Routes>
       <Footer/>
     </div>

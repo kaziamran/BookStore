@@ -7,6 +7,10 @@
   --font-inter: "Inter", sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }

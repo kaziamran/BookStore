@@ -177,7 +177,7 @@ export default function Footer() {
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Back to top"
-        className={`fixed bottom-6 right-6 z-50 grid size-12 place-items-center rounded-full border-2 border-white bg-[#222] text-white transition duration-300 hover:border-[#ee7b24] hover:text-[#ee7b24] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] ${
+        className={`fixed bottom-6 right-6 z-50 grid size-10 place-items-center rounded-full border-2 border-white bg-[#222] text-white transition duration-300 hover:border-[#ee7b24] hover:text-[#ee7b24] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] ${
           showTop
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-4 opacity-0"

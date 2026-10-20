@@ -98,8 +98,8 @@ export default function Footer() {
               aria-label={col.title}
               className={`lg:border-r lg:border-white/10 ${i > 0 ? "lg:pl-12" : ""}`}
             >
-              <h3 className="text-lg font-medium uppercase">{col.title}</h3>
-              <ul className="mt-8 space-y-3 text-base text-gray-200">
+              <h3 className="text-md font-medium uppercase md:text-lg">{col.title}</h3>
+              <ul className="mt-5 space-y-3 text-base text-gray-200 md:mt-8">
                 {col.links.map((label) => (
                   <li key={label}>
                     <a

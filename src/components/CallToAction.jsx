@@ -81,14 +81,14 @@ export default function CallToAction() {
 
   return (
     <section aria-label="Newsletter and social links" className="border-t border-gray-200 bg-[#f5f5f5]">
-      <div className="mx-auto grid max-w-1400px gap-6 px-6 py-14 md:grid-cols-1 md:gap-10 lg:px-16 lg:py-20">
+      <div className="mx-auto grid max-w-1400px gap-5 px-6 py-14 lg:grid-cols-2 md:gap-8 lg:px-16 lg:py-20">
         {/* Left: Newsletter */}
-        <div className="animate-fade-up">
+        <div className="animate-fade-upober overflow-hidden">
           <h2 className="text-xl font-medium uppercase text-[#222] sm:text-2xl">Newsletter</h2>
 
           <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-start">
             {/* Orange icon circle */}
-            <div className="animate-pop-in grid size-20 shrink-0 place-items-center rounded-full bg-[#ee7b24] text-white [animation-delay:200ms] lg:size-88px">
+            <div className="animate-pop-in grid size-18 shrink-0 place-items-center rounded-full bg-[#ee7b24] text-white [animation-delay:100ms] lg:size-88px">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-8" aria-hidden="true">
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <path d="M3 7l9 6 9-6" strokeLinecap="round" strokeLinejoin="round" />
@@ -104,7 +104,7 @@ export default function CallToAction() {
                 <label htmlFor="newsletter-email" className="sr-only">
                   Email address
                 </label>
-                <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-col gap-3 lg:flex-row">
                   <input
                     id="newsletter-email"
                     type="email"

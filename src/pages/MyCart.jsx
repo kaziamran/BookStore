@@ -31,13 +31,13 @@ const MyCart = () => {
         <h1 className='text-xl font-medium capitalize text-[#333] sm:text-2xl lg:text-3xl'>My Cart</h1>
       </div>
 
-      <div className='flex justify-between gap-16'>
-        <div className='flex items-start flex-col gap-4 w-1/2'>
+      <div className='flex flex-col justify-between gap-4 lg:gap-10 md:flex-row'>
+        <div className='flex items-start flex-col gap-4 w-full md:w-1/2'>
           {cartItems.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
         </div>
-        <div className='w-1/2'>
+        <div className='w-full md:w-1/2'>
           <CartSummary/>
         </div>
       </div>

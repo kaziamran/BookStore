@@ -35,12 +35,12 @@ const CartItem = ({ item }) => {
 
   return (
     <div className='w-full'>
-      <li className="flex gap-4 w-full rounded-md border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md sm:gap-7">
+      <li className="flex gap-4 w-full rounded-md border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md sm:gap-4">
         {/* Image */}
         <img
           src={item.image}
           alt={item.alt}
-          className="h-28 w-20 shrink-0 rounded-sm bg-gray-100 object-cover sm:h-36 sm:w-32"
+          className="h-28 w-20 shrink-0 rounded-sm bg-gray-100 object-cover sm:h-28 sm:w-26"
         />
 
         {/* Info */}
@@ -97,7 +97,7 @@ const CartItem = ({ item }) => {
           type="button"
           aria-label={`Remove ${item.title} from cart`}
           onClick={() => setShowModal(true)}
-          className="grid size-9 shrink-0 place-items-center self-start rounded-full text-[#ee7b24] transition hover:bg-[#ee7b24]/10 hover:text-[#d96a16] focus-visible:outline-2 focus-visible:outline-[#ee7b24]"
+          className="grid size-8 lg:size-9 shrink-0 place-items-center self-start rounded-full text-[#ee7b24] transition hover:bg-[#ee7b24]/10 hover:text-[#d96a16] focus-visible:outline-2 focus-visible:outline-[#ee7b24]"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="size-6" aria-hidden="true">
             <path d="M7 6V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7ZM9 4V6H15V4H9Z" />

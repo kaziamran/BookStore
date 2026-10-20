@@ -2,8 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import FeaturedBooks from './components/FeaturedBooks';
-import CallToAction from './components/CallToAction';
 import Home from './pages/Home';
 import MyCart from './pages/MyCart';
 import Checkout from './pages/Checkout';

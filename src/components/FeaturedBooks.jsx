@@ -180,7 +180,7 @@ export default function FeaturedBooks() {
             <li
               key={`${item.id}-${pos}`}
               aria-hidden={item.clone || undefined}
-              className="w-[70%] flex-none sm:w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/3)] lg:w-[calc((100%-4.5rem)/4)]"
+              className="w-[84%] flex-none sm:w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-4.5rem)/4)]"
             >
               <a
                 href="#shop"

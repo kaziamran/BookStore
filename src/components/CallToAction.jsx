@@ -80,8 +80,8 @@ export default function CallToAction() {
   };
 
   return (
-    <section aria-label="Newsletter and social links" className="border-t border-gray-200 bg-[#f5f5f5] font-['Alike',serif]">
-      <div className="mx-auto grid max-w-1400px gap-14 px-6 py-14 md:grid-cols-2 md:gap-10 lg:px-16 lg:py-20">
+    <section aria-label="Newsletter and social links" className="border-t border-gray-200 bg-[#f5f5f5]">
+      <div className="mx-auto grid max-w-1400px gap-6 px-6 py-14 md:grid-cols-1 md:gap-10 lg:px-16 lg:py-20">
         {/* Left: Newsletter */}
         <div className="animate-fade-up">
           <h2 className="text-xl font-medium uppercase text-[#222] sm:text-2xl">Newsletter</h2>

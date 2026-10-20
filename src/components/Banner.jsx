@@ -77,11 +77,11 @@ export default function Banner() {
       >
         {/* Left: content */}
         <div className="mx-auto w-fit max-w-xl text-center font-['Alike',serif]">
-          <h2 className="animate-slide-right text-4xl text-white drop-shadow-md [animation-delay:100ms] lg:text-5xl">
+          <h2 className="animate-slide-right text-3xl text-white drop-shadow-md [animation-delay:100ms] lg:text-5xl">
             {slide.tag}
           </h2>
 
-          <h1 className="animate-fade-up mt-1 text-4xl leading-tight text-[#333] [animation-delay:300ms] sm:text-5xl lg:text-6xl">
+          <h1 className="animate-fade-up mt-1 text-4xl leading-tight text-[#333] [animation-delay:300ms] sm:text-4xl lg:text-6xl">
             {slide.title}
           </h1>
 

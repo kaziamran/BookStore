@@ -131,7 +131,7 @@ export default function FeaturedBooks() {
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
-      className="mx-auto max-w-1400px px-6 py-12 font-['Alike',serif] lg:px-16 lg:py-16"
+      className="mx-auto max-w-1400px px-6 py-12 lg:px-16 lg:py-16"
     >
       {/* Header */}
       <div className="mb-8 flex items-center justify-between gap-4 border-b border-gray-200 pb-4">
@@ -180,7 +180,7 @@ export default function FeaturedBooks() {
             <li
               key={`${item.id}-${pos}`}
               aria-hidden={item.clone || undefined}
-              className="w-[84%] flex-none sm:w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-3rem)/2)] lg:w-[calc((100%-4.5rem)/4)]"
+              className="w-[84%] flex-none sm:w-[calc((100%-1.5rem)/2)] md:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4.5rem)/4)]"
             >
               <a
                 href="#shop"

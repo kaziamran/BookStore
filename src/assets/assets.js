@@ -14,6 +14,8 @@ import FeaturedBooks10 from "./bookCover10.jpg";
 import FeaturedBooks11 from "./bookCover11.jpg";
 import FeaturedBooks12 from "./bookCover12.jpg";
 import SpecialDealImage from "./special-deal-bg.jpg"
+import SpecialDealImage01 from "./special-deal-image01.jpg"
+import SpecialDealImage02 from "./special-deal-image02.jpg"
 
 export const assets = {
   bannerImg01,
@@ -31,7 +33,9 @@ export const assets = {
   FeaturedBooks10,
   FeaturedBooks11,
   FeaturedBooks12,
-  SpecialDealImage
+  SpecialDealImage,
+  SpecialDealImage01,
+  SpecialDealImage02
 };
 
 export const ITEMS = [

@@ -89,7 +89,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#"
+                to="/login"
                 className="flex items-center rounded-lg bg-brand px-4 py-1.5 capitalize text-white transition hover:brightness-110"
               >
                 sign in

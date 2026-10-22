@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import MyCart from './pages/MyCart';
 import Checkout from './pages/Checkout';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/mycart' element={<MyCart/>}></Route>
         <Route path='/checkout' element={<Checkout/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
       </Routes>
       <Footer/>
     </div>

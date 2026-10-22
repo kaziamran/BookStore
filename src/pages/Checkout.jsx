@@ -122,7 +122,7 @@ const Checkout = () => {
   /* ---------- Empty cart ---------- */
   if (cartItems.length === 0) {
     return (
-      <section className="mx-auto max-w-xl px-6 py-16 text-center font-['Alike',serif]">
+      <section className="mx-auto max-w-xl px-6 py-16 text-center">
         <h1 className="text-2xl text-[#333]">Your cart is empty</h1>
         <p className="mt-2 text-lg text-gray-600">Add some books before checking out.</p>
         <a

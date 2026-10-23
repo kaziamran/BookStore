@@ -125,7 +125,7 @@ function Login() {
         <div className="mt-6 border-t border-gray-200 pt-6 text-center text-base text-gray-600">
           Don&apos;t have an account?{' '}
           <Link
-            to="#"
+            to="/signup"
             className="font-medium text-[#ee7b24] transition-colors hover:text-[#d96a16] hover:underline focus-visible:outline-2 focus-visible:outline-[#ee7b24]"
           >
             Create your account

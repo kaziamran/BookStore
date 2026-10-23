@@ -78,7 +78,7 @@ const Navbar = () => {
           {/* Links */}
           <ul className="flex items-center gap-5 text-sm font-medium text-gray-700 md:text-base">
             <li>
-              <Link to="#" className="capitalize transition hover:text-brand">
+              <Link to="/signup" className="capitalize transition hover:text-brand">
                 my account
               </Link>
             </li>

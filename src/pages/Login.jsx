@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../firebase'
+
+const auth = getAuth(app);
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -24,6 +28,12 @@ function Login() {
       setLoading(false);
     }
   }
+
+  const signinUser = () => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((value) => console.log("Login Success"))
+      .catch((err) => console.log(err));
+  };
 
   const inputClass =
     'w-full rounded-sm border border-gray-300 bg-white px-4 py-3 text-base text-[#333] outline-none transition placeholder:text-gray-400 focus:border-[#ee7b24] focus:ring-2 focus:ring-[#ee7b24]/30';
@@ -109,6 +119,7 @@ function Login() {
           <button
             type="submit"
             disabled={loading}
+            onClick={signinUser}
             className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[#ee7b24] py-3 text-lg text-white shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 disabled:pointer-events-none disabled:opacity-60"
           >
             {loading && (

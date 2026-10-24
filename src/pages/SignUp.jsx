@@ -13,7 +13,7 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
 
   const createUser = () => {
-    createUserWithEmailAndPassword(auth, email, password).then(value => alert("Success"));
+    createUserWithEmailAndPassword(auth, email, password).then(value => alert("Account Register Success"));
   };
 
 

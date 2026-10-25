@@ -1,23 +1,17 @@
 import { useEffect, useState } from "react";
 
-const TOP_LINKS = [
-  { label: "Enable Cookies", href: "#" },
-  { label: "Privacy And Cookie Policy", href: "#" },
-  { label: "Contact Us", href: "#" },
-];
-
 const COLUMNS = [
   {
     title: "Products",
-    links: ["About us", "Prices drop", "New products", "Best sales"],
+    links: ["About us", "New products", "Best sales"],
   },
   {
     title: "Our company",
-    links: ["Contact us", "Sitemap", "Stores", "My account"],
+    links: ["Contact us", "Stores", "My account"],
   },
   {
     title: "Your account",
-    links: ["Addresses", "Credit slips", "Orders", "Personal info"],
+    links: ["Addresses", "Orders", "Personal info"],
   },
 ];
 
@@ -69,27 +63,6 @@ export default function Footer() {
   return (
     <footer className="bg-[#222] text-white pt-5">
       <div className="mx-auto max-w-1400px px-6 lg:px-16">
-        {/* Top links */}
-        <nav
-          aria-label="Footer top links"
-          className="border-b border-white/15 py-5"
-        >
-          <ul className="flex flex-wrap items-center gap-y-2 font-['Inter',serif] text-base">
-            {TOP_LINKS.map((link, i) => (
-              <li
-                key={link.label}
-                className={`pr-6 transition-colors hover:text-[#ee7b24] ${
-                  i < TOP_LINKS.length - 1
-                    ? "mr-6 border-r border-white/40 leading-none"
-                    : ""
-                }`}
-              >
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         {/* Main columns */}
         <div className="grid gap-10 py-12 font-['Inter',serif] sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           {COLUMNS.map((col, i) => (
@@ -99,7 +72,7 @@ export default function Footer() {
               className={`lg:border-r lg:border-white/10 ${i > 0 ? "lg:pl-12" : ""}`}
             >
               <h3 className="text-md font-medium uppercase md:text-lg">{col.title}</h3>
-              <ul className="mt-5 space-y-3 text-base text-gray-200 md:mt-8">
+              <ul className="mt-4 space-y-3 text-base text-gray-200 md:mt-5">
                 {col.links.map((label) => (
                   <li key={label}>
                     <a
@@ -118,13 +91,6 @@ export default function Footer() {
           <address className="not-italic lg:pl-12">
             <h3 className="text-lg font-medium uppercase">Store information</h3>
             <div className="mt-8 space-y-5 text-base text-gray-200">
-              <p>
-                My Company
-                <br />
-                <span className="mt-2 block">
-                  42 avenue des Champs Elysées 75000 Paris France
-                </span>
-              </p>
               <p>
                 Call us now:{" "}
                 <a
@@ -151,19 +117,15 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/15">
         <div className="mx-auto flex max-w-1400px flex-col items-center justify-between gap-5 px-6 py-8 font-['Inter',serif] text-lg lg:flex-row lg:px-16">
-          <p className="text-base text-center md:text-left">
-            Copyright © 2021 HasThemes | Built with Koparion by HasThemes.
-          </p>
-
           <ul
-            className="flex flex-wrap justify-center gap-2"
+            className="flex flex-wrap justify-center gap-3"
             aria-label="Accepted payment methods"
           >
             {PAYMENTS.map((p) => (
               <li
                 key={p.name}
                 title={p.name}
-                className={`grid h-11 w-18 place-items-center rounded-sm font-sans ${p.className}`}
+                className={`grid h-12 w-20 place-items-center rounded-sm font-sans ${p.className}`}
               >
                 {p.label}
               </li>

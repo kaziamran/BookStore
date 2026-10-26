@@ -7,11 +7,11 @@ const COLUMNS = [
   },
   {
     title: "Our company",
-    links: ["Contact us", "Stores", "My account"],
+    links: ["Stores", "My account"],
   },
   {
     title: "Your account",
-    links: ["Addresses", "Orders", "Personal info"],
+    links: ["Orders", "Personal info"],
   },
 ];
 

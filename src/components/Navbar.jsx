@@ -1,17 +1,38 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
-const NAV_LINKS = [
-  { label: 'home', to: '/' },
-  { label: 'shop', to: '#' },
-  { label: 'categories', to: '#' },
-  { label: 'contact', to: '#' },
+// Every item needs a real, different path (and the same property names used below: name / path)
+const navItems = [
+  { name: "home", path: "/" },
+  { name: "shop", path: "/shop" },
+  { name: "categories", path: "/categories" },
+  { name: "contact", path: "/contact" },
 ];
 
+/* ---------- Active-link styles (NavLink passes { isActive }) ---------- */
+
+// Top bar (light background)
+const topLinkClass = ({ isActive }) =>
+  `capitalize transition-colors ${
+    isActive ? "font-semibold text-brand" : "hover:text-brand"
+  }`;
+
+// Black bar, desktop
+const darkLinkClass = ({ isActive }) =>
+  `border-b-2 capitalize transition-colors duration-300 ${
+    isActive
+      ? "border-brand font-semibold text-brand"
+      : "border-transparent text-white hover:text-brand"
+  }`;
+
+// Black bar, mobile dropdown
+const mobileLinkClass = ({ isActive }) =>
+  `block border-b border-white/10 py-3 capitalize transition-colors last:border-b-0 ${
+    isActive ? "font-semibold text-brand" : "text-white hover:text-brand"
+  }`;
+
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { state } = useCart();
 
@@ -21,18 +42,16 @@ const Navbar = () => {
   );
 
   const [menuOpen, setMenuOpen] = useState(false);
- 
+
   // Close the mobile menu with the Escape key
   useEffect(() => {
     if (!menuOpen) return;
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') setMenuOpen(false);
+      if (e.key === "Escape") setMenuOpen(false);
     };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
- 
-  const linkClass = 'capitalize text-white transition hover:text-brand';
 
   return (
     <div>
@@ -76,29 +95,27 @@ const Navbar = () => {
             </button>
           </form>
           {/* Links */}
-          <ul className="flex items-center gap-5 text-sm font-medium text-gray-700 md:text-base">
-            <li>
-              <Link to="/signup" className="capitalize transition hover:text-brand">
-                my account
-              </Link>
-            </li>
-            <li>
-              <Link to="/checkout" className="capitalize transition hover:text-brand">
-                checkout
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                className="flex items-center rounded-lg bg-brand px-4 py-1.5 capitalize text-white transition hover:brightness-110"
-              >
-                sign in
-              </Link>
-            </li>
-          </ul>
+          <div className="flex items-center gap-5 text-sm font-medium text-gray-700 md:text-base">
+            <NavLink to="/signup" className={topLinkClass}>
+              my account
+            </NavLink>
+            <NavLink to="/checkout" className={topLinkClass}>
+              checkout
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `flex items-center rounded-lg bg-brand px-4 py-1.5 capitalize text-white transition hover:brightness-110 ${
+                  isActive ? "ring-2 ring-brand/40 ring-offset-2 ring-offset-[#d6dbe1]" : ""
+                }`
+              }
+            >
+              sign in
+            </NavLink>
+          </div>
         </nav>
       </header>
-      
+
       <div className="relative bg-black px-6 py-3 lg:px-16">
         <nav aria-label="Main navigation" className="flex items-center justify-between">
           {/* Left side */}
@@ -107,7 +124,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               className="-ml-1 grid size-10 cursor-pointer place-items-center rounded text-white transition hover:text-brand focus-visible:outline-2 focus-visible:outline-brand md:hidden"
@@ -122,23 +139,26 @@ const Navbar = () => {
                 </svg>
               )}
             </button>
-  
+
             {/* Desktop: links */}
-            <ul className="hidden items-start gap-5 font-['Inter',serif] text-lg font-medium md:flex">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <Link to={link.to} className={linkClass}>
-                    {link.label}
-                  </Link>
-                </li>
+            <div className="hidden items-start gap-5 font-['Inter',serif] text-lg font-medium md:flex">
+              {navItems.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.path}
+                  end={link.path === "/"}
+                  className={darkLinkClass}
+                >
+                  {link.name}
+                </NavLink>
               ))}
-            </ul>
+            </div>
           </div>
-  
+
           {/* Cart (unchanged) */}
           <div className="relative flex items-center justify-end">
             <button
-              onClick={() => navigate('/mycart')}
+              onClick={() => navigate("/mycart")}
               className="cart-box flex cursor-pointer items-center gap-3"
             >
               <svg
@@ -159,23 +179,27 @@ const Navbar = () => {
             </button>
           </div>
         </nav>
- 
+
         {/* Mobile dropdown (slides open under the bar) */}
         <div
           id="mobile-menu"
           className={`absolute inset-x-0 top-full z-40 grid border-t border-white/10 bg-black transition-[grid-template-rows,visibility] duration-300 md:hidden ${
-            menuOpen ? 'visible grid-rows-[1fr]' : 'invisible grid-rows-[0fr] border-transparent'
+            menuOpen ? "visible grid-rows-[1fr]" : "invisible grid-rows-[0fr] border-transparent"
           }`}
         >
-          <ul className="flex flex-col overflow-hidden px-3 font-['Inter',serif] text-lg font-medium">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label} className="border-b border-white/10 last:border-b-0">
-                <Link to={link.to} onClick={() => setMenuOpen(false)} className={`${linkClass} block py-3`}>
-                  {link.label}
-                </Link>
-              </li>
+          <div className="flex flex-col overflow-hidden px-3 font-['Inter',serif] text-lg font-medium">
+            {navItems.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                end={link.path === "/"}
+                onClick={() => setMenuOpen(false)}
+                className={mobileLinkClass}
+              >
+                {link.name}
+              </NavLink>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

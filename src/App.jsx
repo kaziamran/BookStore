@@ -12,6 +12,7 @@ import { app } from './firebase'
 import Shop from './pages/Shop';
 import Categories from './pages/Categories';
 import Contact from './pages/Contact';
+import TopMneu from './components/TopMneu';
 
 const auth = getAuth(app);
 
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <div>
       <Navbar/>
+      <TopMneu/>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/shop' element={<Shop/>}></Route>

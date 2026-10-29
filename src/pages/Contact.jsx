@@ -9,7 +9,7 @@ const inputClass = (error) =>
   }`;
 
 const primaryBtn =
-  'flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[#ee7b24] py-3 text-lg text-white shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 disabled:pointer-events-none disabled:opacity-60';
+  'flex w-full items-center justify-center gap-2 rounded-sm bg-[#ee7b24] py-3 text-lg text-white shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 disabled:pointer-events-none disabled:opacity-60';
 
 function Field({ id, label, error, children }) {
   return (
@@ -39,7 +39,7 @@ function ContactForm() {
     const e = {};
     if (form.name.trim().length < 2) e.name = 'Please enter your name.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = 'Enter a valid email address.';
-    if (form.review.trim().length < 10) e.review = 'Please write at least 10 characters.';
+    if (form.review.trim().length < 10) e.review = 'Please write at least 20 characters.';
     return e;
   };
 
@@ -63,7 +63,6 @@ function ContactForm() {
 
     setStatus('sending');
     try {
-      // TODO: send `form` to your backend, Firebase, EmailJS or Formspree
       console.log('Contact form:', form);
       setStatus('success');
       setForm(EMPTY);
@@ -83,7 +82,7 @@ function ContactForm() {
         Questions or feedback about a book? Leave your review and we will get back to you.
       </p>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4">
         <Field id="name" label="Name" error={errors.name}>
           <input
             id="name"
@@ -119,7 +118,7 @@ function ContactForm() {
             id="review"
             name="review"
             rows={5}
-            maxLength={1000}
+            maxLength={900}
             placeholder="Write your review or message here..."
             value={form.review}
             onChange={handleChange}
@@ -129,7 +128,7 @@ function ContactForm() {
           />
         </Field>
 
-        <div role="status" aria-live="polite" className="min-h-6 text-base">
+        <div role="status" aria-live="polite" className="min-h-4 text-base">
           {status === 'success' && (
             <p className="text-[#2e7d32]">Thank you! Your message has been sent.</p>
           )}
@@ -258,7 +257,7 @@ function TrackOrder() {
                 const done = i <= currentStep;
                 const last = i === STEPS.length - 1;
                 return (
-                  <li key={step} className="relative flex gap-4 pb-6 last:pb-0">
+                  <li key={step} className="relative flex gap-3 pb-5 last:pb-0">
                     {!last && (
                       <span
                         aria-hidden="true"

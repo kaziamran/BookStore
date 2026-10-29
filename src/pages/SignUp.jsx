@@ -1,8 +1,8 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { Link } from 'react-router-dom';
-import { useFirebase } from '../context/Firebase';
 import { app } from '../firebase'
+import { useFirebase } from '../context/FireBase';
 
 const auth = getAuth(app);
 

@@ -12,6 +12,7 @@ import Shop from './pages/Shop';
 import Categories from './pages/Categories';
 import Contact from './pages/Contact';
 import TopMneu from './components/TopMneu';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/checkout' element={<Checkout/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/signup' element={<SignUp/>}></Route>
+        <Route path='/dashboard' element={<Dashboard/>}></Route>
       </Routes>
       <Footer/>
     </div>

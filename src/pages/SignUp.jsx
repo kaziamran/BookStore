@@ -1,20 +1,56 @@
 import { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFirebase } from '../context/Firebase';
 
+// Friendly messages for the most common Firebase errors
+const ERROR_MESSAGES = {
+  'auth/email-already-in-use': 'This email is already registered. Try logging in instead.',
+  'auth/invalid-email': 'Please enter a valid email address.',
+  'auth/weak-password': 'Password must be at least 6 characters.',
+  'auth/network-request-failed': 'Network error. Check your connection and try again.',
+  'auth/too-many-requests': 'Too many attempts. Please try again later.',
+  'auth/operation-not-allowed': 'Email/password sign-up is turned off in the Firebase console.',
+};
+
 function SignUp() {
-  const firebase = useFirebase();
+  const { signupUserWithEmailAndPassword, putData } = useFirebase();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const createUser = () => {
-    createUserWithEmailAndPassword(auth, email, password).then(value => alert("Account Register Success"));
-  };
+  // Runs from the form's onSubmit (not from the button's onClick)
+  const handleSignUp = async (e) => {
+    e.preventDefault(); // stops the page reload that was cancelling the request
+    setError('');
+    setLoading(true);
 
+    try {
+      // 1. Create the account (Firebase Authentication stores email + password safely)
+      const cred = await signupUserWithEmailAndPassword(email, password);
+
+      // 2. Save NON-secret profile info in the database, keyed by the user's uid
+      //    (an email can't be a key: it contains "." which Realtime Database rejects)
+      try {
+        await putData(`users/${cred.user.uid}`, {
+          email: cred.user.email,
+          createdAt: Date.now(),
+        });
+      } catch (dbError) {
+        // The account exists, so don't treat this as a failed sign up
+        console.error('Could not save the profile:', dbError);
+      }
+
+      navigate('/dashboard', { replace: true }).then(value => "Account Register Success");
+    } catch (err) {
+      setError(ERROR_MESSAGES[err.code] || 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const inputClass =
     'w-full rounded-sm border border-gray-300 bg-white px-4 py-3 text-base text-[#333] outline-none transition placeholder:text-gray-400 focus:border-[#ee7b24] focus:ring-2 focus:ring-[#ee7b24]/30';
@@ -23,9 +59,14 @@ function SignUp() {
     <section className="mx-auto flex min-h-[70vh] max-w-1400px items-center justify-center px-6 py-12 lg:px-16 lg:py-16">
       <div className="animate-fade-up w-full max-w-md rounded-md border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
         <h1 className="text-2xl font-medium text-[#333] sm:text-3xl">Sign Up</h1>
-        <p className="mt-2 text-base text-gray-600">Please Register using account detail bellow.</p>
+        <p className="mt-2 text-base text-gray-600">Please register using the account details below.</p>
 
-        <form className="mt-6 flex flex-col gap-5">
+        <form onSubmit={handleSignUp} className="mt-6 flex flex-col gap-5">
+          {error && (
+            <p role="alert" className="rounded-sm border border-red-200 bg-red-50 px-4 py-3 text-base text-red-700">
+              {error}
+            </p>
+          )}
 
           {/* Email */}
           <div>
@@ -38,7 +79,7 @@ function SignUp() {
               autoComplete="email"
               placeholder="you@example.com"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               required
               className={inputClass}
             />
@@ -46,21 +87,20 @@ function SignUp() {
 
           {/* Password */}
           <div>
-            <div className="mb-1.5 flex items-center justify-between gap-3">
-              <label htmlFor="password" className="text-base text-[#333]">
-                Password
-              </label>
-            </div>
+            <label htmlFor="password" className="mb-1.5 block text-base text-[#333]">
+              Password
+            </label>
 
             <div className="relative">
               <input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
-                autoComplete="current-password"
-                placeholder="Enter your password"
+                autoComplete="new-password"
+                placeholder="At least 6 characters"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
+                minLength={6}
                 className={`${inputClass} pr-12`}
               />
               <button
@@ -88,7 +128,6 @@ function SignUp() {
           <button
             type="submit"
             disabled={loading}
-            onClick={createUser}
             className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[#ee7b24] py-3 text-lg text-white shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 disabled:pointer-events-none disabled:opacity-60"
           >
             {loading && (
@@ -97,13 +136,12 @@ function SignUp() {
                 <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
               </svg>
             )}
-            {loading ? 'Sign Up...' : 'Sign Up'}
+            {loading ? 'Creating account...' : 'Sign Up'}
           </button>
         </form>
 
-        {/* Create account */}
         <div className="mt-6 border-t border-gray-200 pt-6 text-center text-base text-gray-600">
-          Do have an account?{' '}
+          Already have an account?{' '}
           <Link
             to="/login"
             className="font-medium text-[#ee7b24] transition-colors hover:text-[#d96a16] hover:underline focus-visible:outline-2 focus-visible:outline-[#ee7b24]"

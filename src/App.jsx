@@ -8,13 +8,10 @@ import MyCart from './pages/MyCart';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import { app } from './firebase'
 import Shop from './pages/Shop';
 import Categories from './pages/Categories';
 import Contact from './pages/Contact';
 import TopMneu from './components/TopMneu';
-
-const auth = getAuth(app);
 
 const App = () => {
 

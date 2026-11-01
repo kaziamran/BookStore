@@ -1,6 +1,26 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../context/Firebase'
+
+function getFriendlyError(code) {
+  switch (code) {
+    case 'auth/invalid-credential':
+    case 'auth/wrong-password':
+    case 'auth/user-not-found':
+      return 'Incorrect email or password.';
+    case 'auth/invalid-email':
+      return 'Please enter a valid email address.';
+    case 'auth/user-disabled':
+      return 'This account has been disabled.';
+    case 'auth/too-many-requests':
+      return 'Too many attempts. Please try again later.';
+    case 'auth/network-request-failed':
+      return 'Network error. Check your connection.';
+    default:
+      return 'Login failed. Please try again.';
+  }
+}
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -8,29 +28,31 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
   async function handleLogin(e) {
     e.preventDefault();
     setError('');
+    setSuccess('');
     setLoading(true);
 
     try {
-      // TODO: send email and password to your authentication service or backend.
-      // e.g. await login(email, password);   // from your AuthContext
-      //      navigate('/');                  // from useNavigate()
-      console.log(email, password);
+      await signInWithEmailAndPassword(auth, email.trim(), password);
+      setSuccess('Login successful! Redirecting...');
+      setTimeout(() => navigate('/dashboard', { replace: true }), 1000);
     } catch (err) {
-      setError(err.message || 'Invalid email or password.');
+      setError(getFriendlyError(err.code));
     } finally {
       setLoading(false);
     }
   }
 
-  const signinUser = () => {
-      signInWithEmailAndPassword(auth, email, password)
-      .then((value) => console.log("Login Success"))
-      .catch((err) => console.log(err));
-  };
+  {success && (
+    <p role="status" className="rounded-sm border border-green-200 bg-green-50 px-4 py-3 text-base text-green-700">
+      {success}
+    </p>
+  )}
 
   const inputClass =
     'w-full rounded-sm border border-gray-300 bg-white px-4 py-3 text-base text-[#333] outline-none transition placeholder:text-gray-400 focus:border-[#ee7b24] focus:ring-2 focus:ring-[#ee7b24]/30';
@@ -116,7 +138,6 @@ function Login() {
           <button
             type="submit"
             disabled={loading}
-            onClick={signinUser}
             className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm bg-[#ee7b24] py-3 text-lg text-white shadow-md shadow-black/20 transition duration-300 hover:-translate-y-0.5 hover:bg-[#d96a16] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] active:translate-y-0 disabled:pointer-events-none disabled:opacity-60"
           >
             {loading && (

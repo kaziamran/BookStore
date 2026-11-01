@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFirebase } from '../context/Firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../context/Firebase'
 
 // Friendly messages for the most common Firebase errors
 const ERROR_MESSAGES = {
@@ -13,7 +15,7 @@ const ERROR_MESSAGES = {
 };
 
 function SignUp() {
-  const { signupUserWithEmailAndPassword, putData } = useFirebase();
+  const { putData } = useFirebase();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -21,36 +23,27 @@ function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
 
   // Runs from the form's onSubmit (not from the button's onClick)
-  const handleSignUp = async (e) => {
-    e.preventDefault(); // stops the page reload that was cancelling the request
-    setError('');
-    setLoading(true);
-
+  async function handleSignup(e) {
+    e.preventDefault();
+    setError(''); setSuccess(''); setLoading(true);
     try {
-      // 1. Create the account (Firebase Authentication stores email + password safely)
-      const cred = await signupUserWithEmailAndPassword(email, password);
-
-      // 2. Save NON-secret profile info in the database, keyed by the user's uid
-      //    (an email can't be a key: it contains "." which Realtime Database rejects)
-      try {
-        await putData(`users/${cred.user.uid}`, {
-          email: cred.user.email,
-          createdAt: Date.now(),
-        });
-      } catch (dbError) {
-        // The account exists, so don't treat this as a failed sign up
-        console.error('Could not save the profile:', dbError);
-      }
-
-      navigate('/dashboard', { replace: true }).then(value => "Account Register Success");
+      await createUserWithEmailAndPassword(auth, email.trim(), password);
+      setSuccess('Account created! Redirecting...');
+      setTimeout(() => navigate('/dashboard', { replace: true }), 1000);
     } catch (err) {
-      setError(ERROR_MESSAGES[err.code] || 'Something went wrong. Please try again.');
+      const messages = {
+        'auth/email-already-in-use': 'This email is already registered.',
+        'auth/weak-password': 'Password must be at least 6 characters.',
+        'auth/invalid-email': 'Please enter a valid email address.',
+      };
+      setError(messages[err.code] || 'Signup failed. Please try again.');
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   const inputClass =
     'w-full rounded-sm border border-gray-300 bg-white px-4 py-3 text-base text-[#333] outline-none transition placeholder:text-gray-400 focus:border-[#ee7b24] focus:ring-2 focus:ring-[#ee7b24]/30';
@@ -61,7 +54,7 @@ function SignUp() {
         <h1 className="text-2xl font-medium text-[#333] sm:text-3xl">Sign Up</h1>
         <p className="mt-2 text-base text-gray-600">Please register using the account details below.</p>
 
-        <form onSubmit={handleSignUp} className="mt-6 flex flex-col gap-5">
+        <form onSubmit={handleSignup} className="mt-6 flex flex-col gap-5">
           {error && (
             <p role="alert" className="rounded-sm border border-red-200 bg-red-50 px-4 py-3 text-base text-red-700">
               {error}

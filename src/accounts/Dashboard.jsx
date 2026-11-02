@@ -1,10 +1,13 @@
 import React from 'react'
+import DashboardContent from './DashboardContent'
+import SideBar from './SideBar'
 
 const Dashboard = () => {
   return (
-    <section>
-       <h2>New Dashboard</h2> 
-    </section>
+    <div className='dashboard-wrap flex'>
+      <SideBar/>
+      <DashboardContent/>
+    </div>
   )
 }
 

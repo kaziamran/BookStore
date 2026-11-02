@@ -3,9 +3,9 @@ import Dashboard from '../accounts/Dashboard'
 
 const AccountLayout = () => {
   return (
-    <div className='flex min-h-screen'>
+    <section className='min-h-screen'>
       <Dashboard/>
-    </div>
+    </section>
   )
 }
 

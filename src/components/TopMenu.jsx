@@ -29,7 +29,7 @@ const mobileLinkClass = ({ isActive }) =>
     isActive ? "font-semibold text-brand" : "text-white hover:text-brand"
   }`;
 
-const TopMneu = () => {
+const TopMenu = () => {
 
   const navigate = useNavigate();
   const { state } = useCart();
@@ -145,4 +145,4 @@ const TopMneu = () => {
   )
 }
 
-export default TopMneu
+export default TopMenu

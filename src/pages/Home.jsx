@@ -4,15 +4,14 @@ import FeaturedBooks from '../components/FeaturedBooks'
 import CallToAction from '../components/CallToAction'
 import SpecialDeal from '../components/SpecialDeal'
 
-
 const Home = () => {
   return (
-    <div>
-        <Banner/>
-        <FeaturedBooks/>
-        <SpecialDeal/>
-        <CallToAction/>
-    </div>
+    <>
+      <Banner/>
+      <FeaturedBooks/>
+      <SpecialDeal/>
+      <CallToAction/>
+    </>
   )
 }
 

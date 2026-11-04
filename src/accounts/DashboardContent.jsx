@@ -49,7 +49,7 @@ const DashboardContent = () => {
         </header>
       </div>
       <div className='p-6'>
-        <h1 className="text-2xl font-medium text-[#333] sm:text-3xl">Dashboard</h1>
+        <h2 className="text-2xl font-medium text-[#333] sm:text-3xl">Dashboard</h2>
         <p className="mt-1 text-base text-gray-600">A summary of your store.</p>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">

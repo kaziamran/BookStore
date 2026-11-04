@@ -139,7 +139,7 @@ const Checkout = () => {
   const rowClass = 'flex items-center justify-between text-base text-gray-600';
 
   return (
-    <section className="mx-auto max-w-1400px px-6 py-12 font-['Alike',serif] lg:px-16 lg:py-16">
+    <section className="mx-auto max-w-1400px px-6 py-12 lg:px-16 lg:py-16">
       <h1 className="mb-8 border-b border-gray-200 pb-4 text-2xl font-medium text-[#333] lg:text-3xl">
         Checkout
       </h1>

@@ -1,10 +1,12 @@
 import React from 'react'
-import Dashboard from '../accounts/Dashboard'
+import { Outlet } from 'react-router-dom'
+import SideBar from '../accounts/SideBar'
 
 const AccountLayout = () => {
   return (
-    <section className='min-h-screen'>
-      <Dashboard/>
+    <section className='min-h-screen flex'>
+      <SideBar/>
+      <main className='w-full'><Outlet/></main>
     </section>
   )
 }

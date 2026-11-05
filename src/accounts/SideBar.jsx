@@ -20,9 +20,9 @@ function Icon({ name }) {
 
 const navItems = [
   { to: '/dashboard', label: 'Dashboard', icon: 'dashboard', end: true },
-  { to: '', label: 'Orders', icon: 'orders' },
-  { to: '', label: 'Customers', icon: 'customers' },
-  { to: '', label: 'Settings', icon: 'settings' },
+  { to: '/dashboard/orders', label: 'Orders', icon: 'orders' },
+  { to: '/dashboard/customers', label: 'Customers', icon: 'customers' },
+  { to: '/dashboard/settings', label: 'Settings', icon: 'settings' },
 ];
 
 const linkClass = ({ isActive }) =>

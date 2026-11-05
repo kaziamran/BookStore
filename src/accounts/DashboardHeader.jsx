@@ -1,3 +1,4 @@
+import React from 'react'
 import { auth } from '../context/Firebase';
 
 const icons = {
@@ -12,14 +13,15 @@ function Icon({ name }) {
   );
 }
 
-const OrdersContent = () => {
-    const user = auth.currentUser;
-    const name = user?.displayName || user?.email || 'Admin';
-    const initial = name.charAt(0).toUpperCase();
+
+const DashboardHeader = () => {
+  const user = auth.currentUser;
+  const name = user?.displayName || user?.email || 'Admin';
+  const initial = name.charAt(0).toUpperCase();
 
   return (
-    <div className='w-full overflow-hidden'>
-      <div className="min-w-0 flex-1">
+    <>
+     <div className="min-w-0 flex-1">
         <header className="flex items-center justify-end gap-4 border-b border-gray-200 bg-white px-4 py-3 md:px-8">
           <button
             type="button"
@@ -40,13 +42,8 @@ const OrdersContent = () => {
           </div>
         </header>
       </div>
-      <div className='p-6'>
-        <h2 className="text-2xl font-medium text-[#333] sm:text-3xl">Orders</h2>
-        <p className="mt-1 text-base text-gray-600">Manage and track all customer orders.</p>
+    </>
+  )
+}
 
-      </div>
-    </div>
-  );
-};
-
-export default OrdersContent;
+export default DashboardHeader

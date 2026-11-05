@@ -10,6 +10,9 @@ import Shop from './pages/Shop';
 import Categories from './pages/Categories';
 import Contact from './pages/Contact';
 import Dashboard from './accounts/Dashboard';
+import Orders from './accounts/Orders';
+import Customers from './accounts/Customers';
+import Settings from './accounts/Settings';
 
 const App = () => {
 
@@ -32,6 +35,9 @@ const App = () => {
         {/* account UI */}
         <Route path='/dashboard' element={<AccountLayout/>}>
           <Route index element={<Dashboard/>}></Route>
+          <Route path='orders' element={<Orders/>}></Route>
+          <Route path='customers' element={<Customers/>}></Route>
+          <Route path='settings' element={<Settings/>}></Route>
         </Route>
       </Routes>
      </BrowserRouter>

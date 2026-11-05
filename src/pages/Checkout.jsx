@@ -18,7 +18,9 @@ const validate = (f) => {
   const e = {};
   if (f.full_name.trim().length < 2) e.full_name = 'Please enter your full name.';
   if (!/^\+?[0-9\s()-]{7,15}$/.test(f.phone.trim())) e.phone = 'Enter a valid phone number.';
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())) e.email = 'Enter a valid email address.';
+  if (f.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())) {
+    e.email = 'Enter a valid email address.';
+  }
   if (!f.building.trim()) e.building = 'Building / House No / Floor / Street is required.';
   if (f.address.trim().length < 5) e.address = 'Please enter your full address.';
   return e;
@@ -31,11 +33,16 @@ const inputClass = (error) =>
       : 'border-gray-300 focus:border-[#ee7b24] focus:ring-[#ee7b24]/30'
   }`;
 
-function Field({ id, label, error, className = '', children }) {
+function Field({ id, label, error, required = true, className = '', children }) {
   return (
     <div className={className}>
       <label htmlFor={id} className="mb-1.5 block text-base text-[#333]">
-        {label} <span className="text-[#ee7b24]">*</span>
+        {label}{' '}
+        {required ? (
+          <span className="text-[#ee7b24]">*</span>
+        ) : (
+          <span className='text-sm text-grey-500'>(Optional)</span>
+        )}
       </label>
       {children}
       {error && (
@@ -185,13 +192,12 @@ const Checkout = () => {
               />
             </Field>
 
-            <Field id="email" label="Email" error={errors.email}>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder="you@example.com"
+            <Field id="email" label="Email" error={errors.email} required={false}>
+              <input 
+                id='email'
+                name='email'
+                type="email" 
+                placeholder='you@example.com'
                 value={form.email}
                 onChange={handleChange}
                 aria-invalid={!!errors.email}

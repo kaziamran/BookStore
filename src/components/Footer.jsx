@@ -90,7 +90,7 @@ export default function Footer() {
           {/* Store information */}
           <address className="not-italic lg:pl-12">
             <h3 className="text-lg font-medium uppercase">Store information</h3>
-            <div className="mt-8 space-y-5 text-base text-gray-200">
+            <div className="mt-5 space-y-5 text-base text-gray-200">
               <p>
                 Call us now:{" "}
                 <a

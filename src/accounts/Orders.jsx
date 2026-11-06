@@ -9,6 +9,8 @@ const INITIAL_ORDERS = [
   { id: 'ORD-1004', customer: 'Nusrat Jahan', product: 'River of Stars', status: 'cancelled', date: 'Nov 02, 2026', amount: 27.9 },
   { id: 'ORD-1005', customer: 'Rafiq Hasan', product: 'A Short History of Sylhet', status: 'completed', date: 'Nov 01, 2026', amount: 91 },
   { id: 'ORD-1006', customer: 'Sadia Islam', product: 'Cooking at Home', status: 'completed', date: 'Oct 30, 2026', amount: 54.25 },
+  { id: 'ORD-1007', customer: 'raju mia', product: 'Cooking at Home', status: 'completed', date: 'Oct 30, 2026', amount: 54.25 },
+  { id: 'ORD-1008', customer: 'Radia hoque', product: 'Cooking at Home', status: 'completed', date: 'Oct 30, 2026', amount: 54.25 },
 ];
 
 const TABS = ['all', 'completed', 'processing', 'cancelled'];

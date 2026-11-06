@@ -21,7 +21,7 @@ const DashboardHeader = () => {
 
   return (
     <>
-     <div className="min-w-0 flex-1">
+     <div className="sticky top-0 z-40 min-w-0 flex-1">
         <header className="flex items-center justify-end gap-4 border-b border-gray-200 bg-white px-4 py-3 md:px-8">
           <button
             type="button"

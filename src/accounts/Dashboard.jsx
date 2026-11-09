@@ -2,10 +2,10 @@ import { auth } from '../context/Firebase';
 import DashboardHeader from './DashboardHeader';
 
 const stats = [
-  { label: 'Total revenue', value: '$2,400' },
-  { label: 'Total orders', value: '128' },
-  { label: 'Total customers', value: '86' },
-  { label: 'Pending deliveries', value: '9' },
+  { label: 'Total revenue', value: '$1,400' },
+  { label: 'Total orders', value: '18' },
+  { label: 'Total customers', value: '6' },
+  { label: 'Pending deliveries', value: '2' },
 ];
 
 const Dashboard = () => {

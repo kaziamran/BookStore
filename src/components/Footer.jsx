@@ -1,53 +1,62 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
+// Each item has a label and a link. Use "#" until the page exists.
 const COLUMNS = [
   {
     title: "Products",
-    links: ["About us", "New products", "Best sales"],
+    items: [
+      { label: "About us", to: "#" },
+      { label: "New products", to: "#" },
+      { label: "Best sales", to: "#" },
+    ],
   },
   {
     title: "Our company",
-    links: ["Stores", "My account"],
+    items: [
+      { label: "My Stores", to: "#" },
+      // ProtectedRoute sends logged-out users to /login, so this works for both
+      { label: "My account", to: "/dashboard" },
+    ],
   },
   {
     title: "Your account",
-    links: ["Orders", "Personal info"],
+    items: [
+      { label: "My Orders", to: "/dashboard/orders" },
+      { label: "Personal info", to: "/dashboard/settings" },
+    ],
   },
 ];
 
 // Placeholder badges. Swap for real logo images, e.g. <img src={assets.visa} />
 const PAYMENTS = [
-  {
-    name: "Visa",
-    label: "VISA",
-    className: "bg-white text-[#1a1f71] font-extrabold italic",
-  },
-  {
-    name: "PayPal",
-    label: "PayPal",
-    className: "bg-white text-[#009cde] font-bold italic",
-  },
-  {
-    name: "Mastercard",
-    label: "MasterCard",
-    className: "bg-[#3a5fa8] text-white text-[11px] font-bold",
-  },
-  {
-    name: "2Checkout",
-    label: "2CO",
-    className: "bg-[#6a67b5] text-white text-xl font-semibold",
-  },
-  {
-    name: "Moneybookers",
-    label: "moneybookers",
-    className: "bg-white text-gray-500 text-[10px]",
-  },
-  {
-    name: "Cirrus",
-    label: "Cirrus",
-    className: "bg-[#3fa7e0] text-white text-sm font-bold",
-  },
+  { name: "Visa", label: "VISA", className: "bg-white text-[#1a1f71] font-extrabold italic" },
+  { name: "PayPal", label: "PayPal", className: "bg-white text-[#009cde] font-bold italic" },
+  { name: "Mastercard", label: "MasterCard", className: "bg-[#3a5fa8] text-white text-xs font-bold" },
+  { name: "2Checkout", label: "2CO", className: "bg-[#6a67b5] text-white text-xl font-semibold" },
+  { name: "Moneybookers", label: "moneybookers", className: "bg-white text-gray-600 text-xs" },
+  { name: "Cirrus", label: "Cirrus", className: "bg-[#3fa7e0] text-white text-sm font-bold" },
 ];
+
+const linkClass = "transition-colors hover:text-[#ee7b24] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24]";
+
+// Internal paths use <Link> (no page reload). "#" and external URLs use <a>.
+function FooterLink({ to, children }) {
+  if (to.startsWith("/")) {
+    return (
+      <Link to={to} className={linkClass}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={to} className={linkClass}>
+      {children}
+    </a>
+  );
+}
+
+const headingClass = "text-base font-medium uppercase md:text-lg";
 
 export default function Footer() {
   const [showTop, setShowTop] = useState(false);
@@ -61,26 +70,21 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#222] text-white pt-5">
+    <footer className="bg-[#222] pt-5 font-['Inter',sans-serif] text-white">
       <div className="mx-auto max-w-1400px px-6 lg:px-16">
         {/* Main columns */}
-        <div className="grid gap-10 py-12 font-['Inter',serif] sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           {COLUMNS.map((col, i) => (
             <nav
               key={col.title}
               aria-label={col.title}
               className={`lg:border-r lg:border-white/10 ${i > 0 ? "lg:pl-12" : ""}`}
             >
-              <h3 className="text-md font-medium uppercase md:text-lg">{col.title}</h3>
+              <h3 className={headingClass}>{col.title}</h3>
               <ul className="mt-4 space-y-3 text-base text-gray-200 md:mt-5">
-                {col.links.map((label) => (
-                  <li key={label}>
-                    <a
-                      href="#"
-                      className="transition-colors hover:text-[#ee7b24]"
-                    >
-                      {label}
-                    </a>
+                {col.items.map((item) => (
+                  <li key={item.label}>
+                    <FooterLink to={item.to}>{item.label}</FooterLink>
                   </li>
                 ))}
               </ul>
@@ -89,23 +93,17 @@ export default function Footer() {
 
           {/* Store information */}
           <address className="not-italic lg:pl-12">
-            <h3 className="text-lg font-medium uppercase">Store information</h3>
-            <div className="mt-5 space-y-5 text-base text-gray-200">
+            <h3 className={headingClass}>Store information</h3>
+            <div className="mt-4 space-y-4 text-base text-gray-200 md:mt-5">
               <p>
                 Call us now:{" "}
-                <a
-                  href="tel:123456789"
-                  className="transition-colors hover:text-[#ee7b24]"
-                >
+                <a href="tel:123456789" className={linkClass}>
                   123456789
                 </a>
               </p>
               <p>
                 Email:{" "}
-                <a
-                  href="mailto:support@domain.com"
-                  className="transition-colors hover:text-[#ee7b24]"
-                >
+                <a href="mailto:support@domain.com" className={linkClass}>
                   support@domain.com
                 </a>
               </p>
@@ -116,11 +114,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/15">
-        <div className="mx-auto flex max-w-1400px flex-col items-center justify-between gap-5 px-6 py-8 font-['Inter',serif] text-lg lg:flex-row lg:px-16">
-          <ul
-            className="flex flex-wrap justify-center gap-3"
-            aria-label="Accepted payment methods"
-          >
+        <div className="mx-auto flex max-w-1400px flex-col items-center justify-between gap-5 px-6 py-8 lg:flex-row lg:px-16">
+          <ul className="flex flex-wrap justify-center gap-3" aria-label="Accepted payment methods">
             {PAYMENTS.map((p) => (
               <li
                 key={p.name}
@@ -139,10 +134,10 @@ export default function Footer() {
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         aria-label="Back to top"
-        className={`fixed bottom-6 right-6 z-50 grid size-10 place-items-center rounded-full border-2 border-white bg-[#222] text-white transition duration-300 hover:border-[#ee7b24] hover:text-[#ee7b24] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] ${
-          showTop
-            ? "translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-4 opacity-0"
+        aria-hidden={!showTop}
+        tabIndex={showTop ? 0 : -1}
+        className={`fixed bottom-6 right-6 z-50 grid size-10 cursor-pointer place-items-center rounded-full border-2 border-white bg-[#222] text-white transition duration-300 hover:border-[#ee7b24] hover:text-[#ee7b24] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ee7b24] ${
+          showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
         }`}
       >
         <svg
@@ -153,11 +148,7 @@ export default function Footer() {
           className="size-6"
           aria-hidden="true"
         >
-          <path
-            d="M6 15l6-6 6 6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <path d="M6 15l6-6 6 6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
     </footer>

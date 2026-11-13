@@ -6,26 +6,26 @@ const COLUMNS = [
   {
     title: "Products",
     items: [
-      { label: "About us", to: "#" },
       { label: "New products", to: "#" },
       { label: "Best sales", to: "#" },
+      { label: "Dealer info", to: "#" },
     ],
   },
   {
-    title: "Our company",
+    title: "Account info",
     items: [
-      { label: "My Stores", to: "#" },
-      // ProtectedRoute sends logged-out users to /login, so this works for both
-      { label: "My account", to: "/dashboard" },
-    ],
-  },
-  {
-    title: "Your account",
-    items: [
+      { label: "My dashboard", to: "/dashboard/" },
       { label: "My Orders", to: "/dashboard/orders" },
       { label: "Personal info", to: "/dashboard/settings" },
     ],
   },
+  {
+    title: "Social community",
+    items: [
+      { label: "Facebook", to: "#" },
+      { label: "Twitter", to: "#" },
+    ],
+  }
 ];
 
 // Placeholder badges. Swap for real logo images, e.g. <img src={assets.visa} />
@@ -98,11 +98,11 @@ export default function Footer() {
               <p>
                 Call us now:{" "}
                 <a href="tel:123456789" className={linkClass}>
-                  123456789
+                  01334567XX
                 </a>
               </p>
               <p>
-                Email:{" "}
+                Email us:{" "}
                 <a href="mailto:support@domain.com" className={linkClass}>
                   support@domain.com
                 </a>

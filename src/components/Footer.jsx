@@ -6,9 +6,9 @@ const COLUMNS = [
   {
     title: "Products",
     items: [
-      { label: "New products", to: "#" },
       { label: "Best sales", to: "#" },
       { label: "Dealer info", to: "#" },
+      { label: "New products", to: "#" },
     ],
   },
   {
@@ -23,6 +23,7 @@ const COLUMNS = [
     title: "Social community",
     items: [
       { label: "Facebook", to: "#" },
+      { label: "Messenger", to: "#" },
       { label: "Twitter", to: "#" },
     ],
   }
@@ -98,7 +99,7 @@ export default function Footer() {
               <p>
                 Call us now:{" "}
                 <a href="tel:123456789" className={linkClass}>
-                  01334567XX
+                  01334-567XXX
                 </a>
               </p>
               <p>
@@ -120,7 +121,7 @@ export default function Footer() {
               <li
                 key={p.name}
                 title={p.name}
-                className={`grid h-12 w-20 place-items-center rounded-sm font-sans ${p.className}`}
+                className={`grid h-12 w-24 place-items-center rounded-sm font-sans ${p.className}`}
               >
                 {p.label}
               </li>
